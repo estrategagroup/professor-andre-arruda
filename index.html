@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frações Descomplicadas — Apostila do Prof. André Arruda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1530;
+    --indigo:#2d2a6e;
+    --indigo-deep:#1b1947;
+    --violet:#5b4ee0;
+    --amber:#ffb627;
+    --amber-deep:#f59300;
+    --cream:#fdf8ef;
+    --paper:#ffffff;
+    --line:#e7e0d2;
+    --green:#7ac74f;
+    --muted:#6b6580;
+    --radius:18px;
+    --shadow:0 24px 60px -22px rgba(27,25,71,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;line-height:1.05;letter-spacing:-.02em}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  .accent{color:var(--amber-deep)}
+  .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:.95;font-weight:800;font-size:.7em;margin:0 .12em}
+  .frac span:first-child{border-bottom:.12em solid currentColor;padding:0 .15em}
+
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(253,248,239,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;color:var(--indigo)}
+  .logo .mark{width:34px;height:34px;border-radius:10px;background:var(--violet);color:#fff;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:900;font-size:20px;box-shadow:0 6px 16px -6px var(--violet)}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--amber);color:var(--ink);font-weight:800;border:none;border-radius:999px;padding:14px 26px;font-size:15px;text-decoration:none;cursor:pointer;box-shadow:0 12px 26px -10px var(--amber-deep);transition:transform .18s ease,box-shadow .18s ease}
+  .btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 18px 34px -12px var(--amber-deep)}
+  .btn.sm{padding:10px 20px;font-size:14px}
+  .btn-line{font-size:12px;opacity:.7;font-weight:600;display:block;margin-top:2px}
+
+  /* hero */
+  .hero{position:relative;padding:64px 0 72px;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+     radial-gradient(circle at 82% 12%,rgba(91,78,224,.10),transparent 40%),
+     radial-gradient(circle at 8% 88%,rgba(255,182,39,.14),transparent 42%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);color:var(--indigo);font-weight:700;font-size:13px;padding:7px 15px;border-radius:999px;margin-bottom:22px}
+  .eyebrow b{color:var(--amber-deep)}
+  .hero h1{font-size:clamp(38px,5.4vw,62px);font-weight:900;color:var(--ink)}
+  .hero h1 .hl{position:relative;white-space:nowrap}
+  .hero h1 .hl::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.06em;height:.34em;background:var(--amber);z-index:-1;border-radius:3px;transform:rotate(-1deg)}
+  .lead{font-size:19px;color:var(--muted);margin:22px 0 26px;max-width:540px}
+  .hero-list{list-style:none;display:grid;gap:11px;margin-bottom:30px}
+  .hero-list li{display:flex;gap:11px;align-items:flex-start;font-weight:600;font-size:15.5px}
+  .hero-list .ck{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:13px;margin-top:2px}
+  .cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .pricepill{font-size:14px;font-weight:700;color:var(--muted)}
+  .pricepill s{opacity:.6}
+  .pricepill b{color:var(--ink);font-size:18px}
+
+  .hero-visual{position:relative;display:grid;place-items:center;min-height:420px}
+  .book{position:relative;width:300px;aspect-ratio:3/4.1;background:linear-gradient(155deg,var(--indigo),var(--indigo-deep));border-radius:8px 16px 16px 8px;box-shadow:var(--shadow),inset 14px 0 0 -10px rgba(255,255,255,.12);padding:30px 26px;color:#fff;transform:rotate(-4deg);animation:float 6s ease-in-out infinite}
+  @keyframes float{50%{transform:rotate(-4deg) translateY(-12px)}}
+  .book .tag{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:800}
+  .book h3{font-size:40px;font-weight:900;margin:14px 0 6px;line-height:.95}
+  .book .sub{font-size:14px;opacity:.8;font-weight:600}
+  .book .pie{width:118px;height:118px;border-radius:50%;margin:26px auto 8px;background:conic-gradient(var(--amber) 0 90deg,rgba(255,255,255,.16) 90deg 360deg);position:relative}
+  .book .pie::after{content:"";position:absolute;inset:0;border:2px solid rgba(255,255,255,.4);border-radius:50%}
+  .book .pie::before{content:"";position:absolute;top:50%;left:50%;width:100%;height:2px;background:rgba(255,255,255,.4);transform:translateY(-50%)}
+  .book .author{position:absolute;bottom:26px;left:26px;font-family:'Fraunces',serif;font-weight:600;font-size:16px}
+  .book .author small{display:block;font-family:'Plus Jakarta Sans';font-size:11px;opacity:.7;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+  .float-card{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:13px 16px;box-shadow:0 16px 32px -16px rgba(27,25,71,.4);font-weight:800;font-size:14px;display:flex;align-items:center;gap:9px}
+  .float-card .dot{width:9px;height:9px;border-radius:50%;background:var(--green)}
+  .fc1{top:18px;right:0;animation:float 5s ease-in-out infinite}
+  .fc2{bottom:28px;left:-8px;animation:float 5.6s ease-in-out infinite .4s}
+  .fc2 .dot{background:var(--violet)}
+
+  /* strip */
+  .strip{background:var(--indigo-deep);color:#fff;padding:18px 0}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:14px 38px;justify-content:center;align-items:center;font-weight:700;font-size:14px}
+  .strip span{display:flex;align-items:center;gap:9px;opacity:.92}
+  .strip .i{color:var(--amber)}
+
+  section{padding:78px 0}
+  .sec-head{max-width:680px;margin:0 auto 50px;text-align:center}
+  .kicker{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:14px}
+  .sec-head h2{font-size:clamp(30px,4vw,46px);font-weight:900}
+  .sec-head p{color:var(--muted);font-size:18px;margin-top:16px}
+
+  /* pain */
+  .pain{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:860px;margin:0 auto}
+  .pain-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;display:flex;gap:14px;align-items:flex-start}
+  .pain-card .x{flex:0 0 30px;width:30px;height:30px;border-radius:9px;background:#ffe3e0;color:#d6453a;display:grid;place-items:center;font-weight:900}
+  .pain-card p{font-weight:600;font-size:15.5px}
+
+  /* inside */
+  .inside-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .mod{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:transform .2s ease,box-shadow .2s ease}
+  .mod:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .mod .num{font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--violet);opacity:.5;line-height:1}
+  .mod h3{font-size:20px;font-weight:600;margin:12px 0 8px}
+  .mod p{color:var(--muted);font-size:14.5px}
+
+  /* mechanism */
+  .mech{background:linear-gradient(160deg,var(--indigo),var(--indigo-deep));color:#fff;border-radius:28px;padding:54px;display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;box-shadow:var(--shadow)}
+  .mech .badge{display:inline-block;background:var(--amber);color:var(--ink);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:18px}
+  .mech h2{color:#fff;font-size:clamp(28px,3.4vw,40px);font-weight:900}
+  .mech p{opacity:.85;margin-top:16px;font-size:17px}
+  .mech .demo{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:34px;text-align:center}
+  .mech .demo .big{font-family:'Fraunces',serif;font-size:clamp(30px,4vw,46px);font-weight:900;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+  .mech .demo .arrow{color:var(--amber);font-size:.7em}
+  .mech .demo small{display:block;margin-top:18px;opacity:.7;font-weight:600;letter-spacing:.04em}
+
+  /* proof */
+  .proof{text-align:center}
+  .banks{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:760px;margin:0 auto 36px}
+  .bank{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:13px 22px;font-weight:800;color:var(--indigo);font-size:15px;letter-spacing:.02em}
+  .qcount{display:inline-grid;place-items:center;background:var(--violet);color:#fff;border-radius:24px;padding:34px 50px;box-shadow:var(--shadow)}
+  .qcount b{font-family:'Fraunces',serif;font-size:62px;font-weight:900;line-height:1}
+  .qcount span{font-weight:700;font-size:15px;opacity:.92}
+
+  /* who */
+  .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:880px;margin:0 auto}
+  .who-card{display:flex;gap:14px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;font-weight:600}
+  .who-card .e{font-size:26px}
+
+  /* offer */
+  .offer{background:var(--indigo-deep);color:#fff;position:relative;overflow:hidden}
+  .offer::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,182,39,.16),transparent 45%)}
+  .offer .wrap{position:relative}
+  .offer-box{max-width:560px;margin:0 auto;background:var(--paper);color:var(--ink);border-radius:26px;padding:44px 40px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);text-align:center}
+  .offer-box .ribbon{display:inline-block;background:var(--green);color:#fff;font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:18px}
+  .offer-box h2{font-size:30px;font-weight:900}
+  .offer-list{list-style:none;text-align:left;display:grid;gap:10px;margin:26px 0;max-width:380px;margin-inline:auto}
+  .offer-list li{display:flex;gap:11px;align-items:flex-start;font-weight:600;font-size:15px}
+  .offer-list .ck{flex:0 0 21px;width:21px;height:21px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:12px;margin-top:2px}
+  .price{display:flex;align-items:flex-end;justify-content:center;gap:8px;margin:8px 0 4px}
+  .price .from{color:var(--muted);font-size:15px;font-weight:700;align-self:center}
+  .price .from s{display:block;font-size:13px}
+  .price .now{font-family:'Fraunces',serif;font-weight:900;font-size:64px;line-height:.9;color:var(--ink)}
+  .price .cur{font-family:'Fraunces',serif;font-weight:900;font-size:26px;align-self:flex-start;margin-top:8px}
+  .installment{color:var(--muted);font-weight:600;font-size:14px;margin-bottom:24px}
+  .offer-box .btn{width:100%;justify-content:center;font-size:18px;padding:18px}
+  .secure{display:flex;gap:16px;justify-content:center;margin-top:18px;color:var(--muted);font-size:12.5px;font-weight:600;flex-wrap:wrap}
+  .secure span{display:flex;align-items:center;gap:6px}
+
+  /* guarantee */
+  .guar{display:flex;gap:26px;align-items:center;max-width:760px;margin:46px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 32px}
+  .guar .seal{flex:0 0 88px;width:88px;height:88px;border-radius:50%;background:var(--cream);border:3px dashed var(--amber);display:grid;place-items:center;text-align:center;font-family:'Fraunces',serif;font-weight:900;color:var(--amber-deep);line-height:1;font-size:13px}
+  .guar .seal b{display:block;font-size:30px}
+  .guar h3{font-size:20px;font-weight:600;margin-bottom:6px}
+  .guar p{color:var(--muted);font-size:15px}
+
+  /* testimonials */
+  .tess{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tes{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .tes .stars{color:var(--amber);letter-spacing:2px;margin-bottom:12px}
+  .tes p{font-size:15px;font-weight:500;margin-bottom:16px}
+  .tes .who{display:flex;align-items:center;gap:11px}
+  .tes .av{width:40px;height:40px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;font-weight:800}
+  .tes .who b{font-size:14px}
+  .tes .who small{display:block;color:var(--muted);font-size:12.5px;font-weight:600}
+  .note{max-width:680px;margin:24px auto 0;text-align:center;font-size:12.5px;color:var(--muted)}
+
+  /* faq */
+  .faq{max-width:760px;margin:0 auto}
+  details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:0;margin-bottom:12px;overflow:hidden}
+  summary{list-style:none;cursor:pointer;padding:20px 24px;font-weight:700;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+  summary::-webkit-details-marker{display:none}
+  summary .plus{flex:0 0 24px;width:24px;height:24px;border-radius:7px;background:var(--cream);color:var(--violet);display:grid;place-items:center;font-weight:900;transition:transform .2s}
+  details[open] summary .plus{transform:rotate(45deg)}
+  details .ans{padding:0 24px 22px;color:var(--muted);font-size:15px;font-weight:500}
+
+  /* final */
+  .final{text-align:center}
+  .final h2{font-size:clamp(30px,4.4vw,50px);font-weight:900;max-width:760px;margin:0 auto 18px}
+  .final p{color:var(--muted);font-size:18px;margin-bottom:30px}
+
+  footer{background:var(--indigo-deep);color:rgba(255,255,255,.7);padding:40px 0;text-align:center;font-size:13.5px}
+  footer .logo{justify-content:center;color:#fff;margin-bottom:14px}
+  footer a{color:var(--amber)}
+
+  @media(max-width:880px){
+    .hero .wrap{grid-template-columns:1fr;gap:30px}
+    .hero-visual{min-height:360px;order:-1}
+    .inside-grid,.tess{grid-template-columns:1fr}
+    .pain-grid,.who-grid{grid-template-columns:1fr}
+    .mech{grid-template-columns:1fr;padding:36px 26px;gap:30px}
+    .guar{flex-direction:column;text-align:center}
+    section{padding:58px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo"><span class="mark">a</span> andré<b>arruda</b></div>
+    <a href="#oferta" class="btn sm">Quero a apostila →</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">📘 Apostila digital • <b>acesso imediato</b></span>
+      <h1>Pare de <span class="hl">errar frações</span> e garanta os pontos fáceis na sua prova.</h1>
+      <p class="lead">Teoria direta ao ponto, o atalho que dispensa MMC e <b>40 questões de concurso reais com gabarito</b>. Tudo o que você precisa de frações em um só material.</p>
+      <ul class="hero-list">
+        <li><span class="ck">✓</span> Da definição às dízimas periódicas — sem buracos na base</li>
+        <li><span class="ck">✓</span> Método Borboleta: soma e subtrai frações <b>sem calcular MMC</b></li>
+        <li><span class="ck">✓</span> Os 7 erros que mais derrubam candidato — e como blindar</li>
+        <li><span class="ck">✓</span> Questões FCC, Cebraspe, VUNESP, FGV, ENEM <b>gabaritadas</b></li>
+      </ul>
+      <div class="cta-row">
+        <a href="#oferta" class="btn">Garantir por R$29,90<span class="btn-line">acesso vitalício</span></a>
+        <div class="pricepill"><s>de R$67,00</s><br><b>por R$29,90</b></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="book">
+        <span class="tag">Matemática</span>
+        <h3>Frações</h3>
+        <span class="sub">Teoria • Prática • Concursos</span>
+        <div class="pie"></div>
+        <div class="author">Prof. André Arruda<small>31 páginas</small></div>
+      </div>
+      <div class="float-card fc1"><span class="dot"></span> 40 questões gabaritadas</div>
+      <div class="float-card fc2"><span class="dot"></span> Gabarito de tudo</div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <span><span class="i">★</span> 31 páginas de conteúdo</span>
+    <span><span class="i">★</span> Acesso imediato e vitalício</span>
+    <span><span class="i">★</span> Estude no celular ou imprima</span>
+    <span><span class="i">★</span> 7 dias de garantia</span>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Soa familiar?</div>
+      <h2>Frações são "fáceis"… até a hora da prova</h2>
+      <p>Quase toda prova de concurso e o ENEM cobram frações de algum jeito. Quem não domina perde os pontos mais baratos do edital.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card"><span class="x">✕</span><p>Você soma os denominadores na pressa e a questão inteira vai embora.</p></div>
+      <div class="pain-card"><span class="x">✕</span><p>Trava no MMC, perde tempo precioso e acaba "chutando" na reta final.</p></div>
+      <div class="pain-card"><span class="x">✕</span><p>Estuda por vídeos soltos no YouTube e nunca consolida a base.</p></div>
+      <div class="pain-card"><span class="x">✕</span><p>Dízima periódica e fração geratriz ainda parecem um "bicho de sete cabeças".</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">O que tem dentro</div>
+      <h2>Tudo de frações, do zero ao nível concurso</h2>
+      <p>Um material autossuficiente: você não vai precisar de mais nada para dominar o tema.</p>
+    </div>
+    <div class="inside-grid">
+      <div class="mod"><div class="num">01</div><h3>Fundamentos sem enrolação</h3><p>Definição, leitura, e todos os tipos de fração (própria, imprópria, mista, equivalente, irredutível...).</p></div>
+      <div class="mod"><div class="num">02</div><h3>As 4 operações</h3><p>Soma, subtração, multiplicação e divisão passo a passo, com quadro-resumo para revisão rápida.</p></div>
+      <div class="mod"><div class="num">03</div><h3>Método Borboleta</h3><p>O atalho para somar e subtrair frações sem precisar calcular MMC. Rápido e perfeito para prova.</p></div>
+      <div class="mod"><div class="num">04</div><h3>Dízimas e fração geratriz</h3><p>Simples, composta e com parte inteira — com a regra mastigada e exemplos resolvidos.</p></div>
+      <div class="mod"><div class="num">05</div><h3>Os 7 erros mais comuns</h3><p>O lado certo e o errado, lado a lado, para você nunca mais cair nas pegadinhas clássicas.</p></div>
+      <div class="mod"><div class="num">06</div><h3>Baterias de exercícios</h3><p>Fixação, aplicação e situações-problema. Todos com gabarito para você conferir.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MECHANISM -->
+<section>
+  <div class="wrap">
+    <div class="mech">
+      <div>
+        <span class="badge">Diferencial exclusivo</span>
+        <h2>O atalho que faz você resolver em segundos</h2>
+        <p>Enquanto a maioria perde tempo calculando MMC, você aplica o <b>Método Borboleta</b> e mata a conta de soma e subtração na hora. Ideal para prova sem calculadora, onde cada minuto conta.</p>
+      </div>
+      <div class="demo">
+        <div class="big">
+          <span class="frac"><span>1</span><span>2</span></span> +
+          <span class="frac"><span>5</span><span>3</span></span>
+          <span class="arrow">→</span>
+          <span class="frac"><span>13</span><span>6</span></span>
+        </div>
+        <small>sem MMC · direto · à prova de erro</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Não é teoria solta</div>
+      <h2>Treine com questão que cai de verdade</h2>
+      <p>O material traz uma bateria de questões das maiores bancas do país — todas gabaritadas para você conferir seu desempenho.</p>
+    </div>
+    <div class="banks">
+      <span class="bank">FCC</span>
+      <span class="bank">Cebraspe / CESPE</span>
+      <span class="bank">VUNESP</span>
+      <span class="bank">FGV</span>
+      <span class="bank">CESGRANRIO</span>
+      <span class="bank">UFPR</span>
+      <span class="bank">ENEM</span>
+      <span class="bank">Selecon</span>
+      <span class="bank">+ outras</span>
+    </div>
+    <div class="qcount"><b>40</b><span>questões de concurso com gabarito</span></div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="pain">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Para quem é</div>
+      <h2>Feito sob medida para quem precisa de resultado</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card"><span class="e">🎯</span> Concurseiros de nível médio e fundamental (tribunais, prefeituras, Marinha…)</div>
+      <div class="who-card"><span class="e">📝</span> Quem vai prestar ENEM ou vestibular e trava em matemática básica</div>
+      <div class="who-card"><span class="e">🔁</span> Quem precisa recuperar a base e revisar frações de uma vez por todas</div>
+      <div class="who-card"><span class="e">⏱️</span> Quem tem pouco tempo e quer ir direto ao que cai na prova</div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer" id="oferta">
+  <div class="wrap">
+    <div class="sec-head" style="color:#fff">
+      <div class="kicker" style="color:var(--amber)">Oferta de lançamento</div>
+      <h2 style="color:#fff">Garanta sua apostila agora</h2>
+    </div>
+    <div class="offer-box">
+      <span class="ribbon">acesso imediato</span>
+      <h2>Frações Descomplicadas</h2>
+      <ul class="offer-list">
+        <li><span class="ck">✓</span> Apostila completa em PDF (31 páginas)</li>
+        <li><span class="ck">✓</span> Método Borboleta + quadro-resumo das operações</li>
+        <li><span class="ck">✓</span> 40 questões de concurso gabaritadas</li>
+        <li><span class="ck">✓</span> Exercícios de fixação e aplicação com gabarito</li>
+        <li><span class="ck">✓</span> Estude no celular, computador ou impresso</li>
+        <li><span class="ck">✓</span> Acesso vitalício e atualizações gratuitas</li>
+      </ul>
+      <div class="price">
+        <span class="from">de<s> R$67</s></span>
+        <span class="cur">R$</span>
+        <span class="now">29,90</span>
+      </div>
+      <div class="installment">à vista no Pix ou parcelado no cartão</div>
+      <a href="#" class="btn">QUERO MINHA APOSTILA →</a>
+      <div class="secure">
+        <span>🔒 Compra 100% segura</span>
+        <span>⚡ Liberação na hora</span>
+        <span>🛡️ Garantia de 7 dias</span>
+      </div>
+    </div>
+
+    <div class="guar">
+      <div class="seal">7<b>DIAS</b>garantia</div>
+      <div>
+        <h3>Risco zero para você</h3>
+        <p>Se em até 7 dias você achar que o material não é para você, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia. O risco é todo nosso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Quem estudou, aprovou</div>
+      <h2>O que os alunos dizem</h2>
+    </div>
+    <div class="tess">
+      <div class="tes">
+        <div class="stars">★★★★★</div>
+        <p>"Eu odiava frações e travava em toda prova. O Método Borboleta mudou minha vida na hora da soma. Material direto e barato."</p>
+        <div class="who"><span class="av">M</span><div><b>Mariana S.</b><small>Concurseira</small></div></div>
+      </div>
+      <div class="tes">
+        <div class="stars">★★★★★</div>
+        <p>"As 40 questões de concurso com gabarito valem o preço sozinhas. Treinei com banca de verdade e fui muito melhor na prova."</p>
+        <div class="who"><span class="av">R</span><div><b>Rafael T.</b><small>Aprovado em tribunal</small></div></div>
+      </div>
+      <div class="tes">
+        <div class="stars">★★★★★</div>
+        <p>"Finalmente entendi dízima periódica e fração geratriz. A parte de erros mais comuns me salvou de pegadinhas clássicas."</p>
+        <div class="who"><span class="av">J</span><div><b>Juliana P.</b><small>Estudante ENEM</small></div></div>
+      </div>
+    </div>
+    <p class="note">⚠️ Depoimentos ilustrativos — substitua por prints/avaliações reais dos seus alunos antes de publicar.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="pain">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Dúvidas frequentes</div>
+      <h2>Tudo o que você precisa saber</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>Como vou receber o material? <span class="plus">+</span></summary><div class="ans">É 100% digital. Assim que o pagamento é confirmado, você recebe o acesso por e-mail na mesma hora e pode baixar a apostila em PDF quantas vezes quiser.</div></details>
+      <details><summary>Preciso de conhecimento prévio? <span class="plus">+</span></summary><div class="ans">Não. O material começa do absoluto zero — definição de fração — e evolui de forma progressiva até questões de concurso. Serve tanto para iniciantes quanto para revisão.</div></details>
+      <details><summary>Posso estudar pelo celular? <span class="plus">+</span></summary><div class="ans">Sim. O PDF abre em qualquer celular, tablet ou computador, e você também pode imprimir se preferir estudar no papel.</div></details>
+      <details><summary>As questões são atualizadas? <span class="plus">+</span></summary><div class="ans">Sim. São questões de bancas reais (FCC, Cebraspe, VUNESP, FGV, ENEM e outras) com gabarito, e você recebe as atualizações futuras sem pagar nada a mais.</div></details>
+      <details><summary>E se eu não gostar? <span class="plus">+</span></summary><div class="ans">Você tem 7 dias de garantia incondicional. Se não for para você, é só pedir o reembolso e devolvemos 100% do valor.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Os pontos de frações estão na sua prova. Garanta-os hoje.</h2>
+    <p>Por menos do que um lanche, domine de uma vez o tema que mais aparece e menos gente acerta.</p>
+    <a href="#oferta" class="btn" style="font-size:18px;padding:18px 38px">Quero garantir por R$29,90 →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><span class="mark">a</span> andré<b>arruda</b></div>
+    <p>© 2026 Prof. André Arruda · Todos os direitos reservados.<br>
+    Este é um produto digital. <a href="#">Termos de uso</a> · <a href="#">Política de privacidade</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

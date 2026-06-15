@@ -38,24 +38,17 @@
   .accent{color:var(--amber-deep)}
   .frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:.95;font-weight:800;font-size:.7em;margin:0 .12em}
   .frac span:first-child{border-bottom:.12em solid currentColor;padding:0 .15em}
-
-  /* top bar */
   .topbar{position:sticky;top:0;z-index:50;background:rgba(253,248,239,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;min-height:80px;padding:10px 0}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;color:var(--indigo);flex-shrink:0}
   .logo img{display:block;width:auto;max-height:56px;max-width:100%;object-fit:contain}
   .topbar .logo img{max-height:48px}
-  .logo .mark{width:34px;height:34px;border-radius:10px;background:var(--violet);color:#fff;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:900;font-size:20px;box-shadow:0 6px 16px -6px var(--violet)}
   .btn{display:inline-flex;align-items:center;gap:9px;background:var(--amber);color:var(--ink);font-weight:800;border:none;border-radius:999px;padding:14px 26px;font-size:15px;text-decoration:none;cursor:pointer;box-shadow:0 12px 26px -10px var(--amber-deep);transition:transform .18s ease,box-shadow .18s ease}
   .btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 18px 34px -12px var(--amber-deep)}
   .btn.sm{padding:10px 20px;font-size:14px}
   .btn-line{font-size:12px;opacity:.7;font-weight:600;display:block;margin-top:2px}
-
-  /* hero */
   .hero{position:relative;padding:64px 0 72px;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background:
-     radial-gradient(circle at 82% 12%,rgba(91,78,224,.10),transparent 40%),
-     radial-gradient(circle at 8% 88%,rgba(255,182,39,.14),transparent 42%);pointer-events:none}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 12%,rgba(91,78,224,.10),transparent 40%),radial-gradient(circle at 8% 88%,rgba(255,182,39,.14),transparent 42%);pointer-events:none}
   .hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;position:relative}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);color:var(--indigo);font-weight:700;font-size:13px;padding:7px 15px;border-radius:999px;margin-bottom:22px}
   .eyebrow b{color:var(--amber-deep)}
@@ -70,7 +63,6 @@
   .pricepill{font-size:14px;font-weight:700;color:var(--muted)}
   .pricepill s{opacity:.6}
   .pricepill b{color:var(--ink);font-size:18px}
-
   .hero-visual{position:relative;display:grid;place-items:center;min-height:420px}
   .book{position:relative;width:300px;aspect-ratio:3/4.1;background:linear-gradient(155deg,var(--indigo),var(--indigo-deep));border-radius:8px 16px 16px 8px;box-shadow:var(--shadow),inset 14px 0 0 -10px rgba(255,255,255,.12);padding:30px 26px;color:#fff;transform:rotate(-4deg);animation:float 6s ease-in-out infinite}
   @keyframes float{50%{transform:rotate(-4deg) translateY(-12px)}}
@@ -87,35 +79,26 @@
   .fc1{top:18px;right:0;animation:float 5s ease-in-out infinite}
   .fc2{bottom:28px;left:-8px;animation:float 5.6s ease-in-out infinite .4s}
   .fc2 .dot{background:var(--violet)}
-
-  /* strip */
   .strip{background:var(--indigo-deep);color:#fff;padding:18px 0}
   .strip .wrap{display:flex;flex-wrap:wrap;gap:14px 38px;justify-content:center;align-items:center;font-weight:700;font-size:14px}
   .strip span{display:flex;align-items:center;gap:9px;opacity:.92}
   .strip .i{color:var(--amber)}
-
   section{padding:78px 0}
   .sec-head{max-width:680px;margin:0 auto 50px;text-align:center}
   .kicker{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:14px}
   .sec-head h2{font-size:clamp(30px,4vw,46px);font-weight:900}
   .sec-head p{color:var(--muted);font-size:18px;margin-top:16px}
-
-  /* pain */
   .pain{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:860px;margin:0 auto}
   .pain-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;display:flex;gap:14px;align-items:flex-start}
   .pain-card .x{flex:0 0 30px;width:30px;height:30px;border-radius:9px;background:#ffe3e0;color:#d6453a;display:grid;place-items:center;font-weight:900}
   .pain-card p{font-weight:600;font-size:15.5px}
-
-  /* inside */
   .inside-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .mod{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:transform .2s ease,box-shadow .2s ease}
   .mod:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
   .mod .num{font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--violet);opacity:.5;line-height:1}
   .mod h3{font-size:20px;font-weight:600;margin:12px 0 8px}
   .mod p{color:var(--muted);font-size:14.5px}
-
-  /* mechanism */
   .mech{background:linear-gradient(160deg,var(--indigo),var(--indigo-deep));color:#fff;border-radius:28px;padding:54px;display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;box-shadow:var(--shadow)}
   .mech .badge{display:inline-block;background:var(--amber);color:var(--ink);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:18px}
   .mech h2{color:#fff;font-size:clamp(28px,3.4vw,40px);font-weight:900}
@@ -124,21 +107,15 @@
   .mech .demo .big{font-family:'Fraunces',serif;font-size:clamp(30px,4vw,46px);font-weight:900;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
   .mech .demo .arrow{color:var(--amber);font-size:.7em}
   .mech .demo small{display:block;margin-top:18px;opacity:.7;font-weight:600;letter-spacing:.04em}
-
-  /* proof */
   .proof{text-align:center}
   .banks{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:760px;margin:0 auto 36px}
   .bank{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:13px 22px;font-weight:800;color:var(--indigo);font-size:15px;letter-spacing:.02em}
   .qcount{display:inline-grid;place-items:center;background:var(--violet);color:#fff;border-radius:24px;padding:34px 50px;box-shadow:var(--shadow)}
   .qcount b{font-family:'Fraunces',serif;font-size:62px;font-weight:900;line-height:1}
   .qcount span{font-weight:700;font-size:15px;opacity:.92}
-
-  /* who */
   .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:880px;margin:0 auto}
   .who-card{display:flex;gap:14px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;font-weight:600}
   .who-card .e{font-size:26px}
-
-  /* offer */
   .offer{background:var(--indigo-deep);color:#fff;position:relative;overflow:hidden}
   .offer::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,182,39,.16),transparent 45%)}
   .offer .wrap{position:relative}
@@ -157,15 +134,11 @@
   .offer-box .btn{width:100%;justify-content:center;font-size:18px;padding:18px}
   .secure{display:flex;gap:16px;justify-content:center;margin-top:18px;color:var(--muted);font-size:12.5px;font-weight:600;flex-wrap:wrap}
   .secure span{display:flex;align-items:center;gap:6px}
-
-  /* guarantee */
   .guar{display:flex;gap:26px;align-items:center;max-width:760px;margin:46px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 32px}
   .guar .seal{flex:0 0 88px;width:88px;height:88px;border-radius:50%;background:var(--cream);border:3px dashed var(--amber);display:grid;place-items:center;text-align:center;font-family:'Fraunces',serif;font-weight:900;color:var(--amber-deep);line-height:1;font-size:13px}
   .guar .seal b{display:block;font-size:30px}
   .guar h3{font-size:20px;font-weight:600;margin-bottom:6px}
   .guar p{color:var(--muted);font-size:15px}
-
-  /* testimonials */
   .tess{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .tes{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
   .tes .stars{color:var(--amber);letter-spacing:2px;margin-bottom:12px}
@@ -175,8 +148,6 @@
   .tes .who b{font-size:14px}
   .tes .who small{display:block;color:var(--muted);font-size:12.5px;font-weight:600}
   .note{max-width:680px;margin:24px auto 0;text-align:center;font-size:12.5px;color:var(--muted)}
-
-  /* faq */
   .faq{max-width:760px;margin:0 auto}
   details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:0;margin-bottom:12px;overflow:hidden}
   summary{list-style:none;cursor:pointer;padding:20px 24px;font-weight:700;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:14px}
@@ -184,17 +155,13 @@
   summary .plus{flex:0 0 24px;width:24px;height:24px;border-radius:7px;background:var(--cream);color:var(--violet);display:grid;place-items:center;font-weight:900;transition:transform .2s}
   details[open] summary .plus{transform:rotate(45deg)}
   details .ans{padding:0 24px 22px;color:var(--muted);font-size:15px;font-weight:500}
-
-  /* final */
   .final{text-align:center}
   .final h2{font-size:clamp(30px,4.4vw,50px);font-weight:900;max-width:760px;margin:0 auto 18px}
   .final p{color:var(--muted);font-size:18px;margin-bottom:30px}
-
   footer{background:var(--indigo-deep);color:rgba(255,255,255,.7);padding:40px 0;text-align:center;font-size:13.5px}
   footer .logo{justify-content:center;color:#fff;margin-bottom:14px}
   footer .footer-logo img{max-height:92px;filter:brightness(0) invert(1)}
   footer a{color:var(--amber)}
-
   @media(max-width:880px){
     .hero .wrap{grid-template-columns:1fr;gap:30px}
     .hero-visual{min-height:360px;order:-1}
@@ -213,15 +180,12 @@
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <div class="wrap">
     <div class="logo"><img src="imagens/logo_andre_arruda_transparente.png" alt="Prof. André Arruda"></div>
-    <a href="#oferta" class="btn sm">Quero a apostila →</a>
+    <a href="https://pay.hotmart.com/N106311191W" class="btn sm" target="_blank" rel="noopener">Quero a apostila →</a>
   </div>
 </div>
-
-<!-- HERO -->
 <header class="hero">
 <script>
 !function(f,b,e,v,n,t,s)
@@ -250,7 +214,7 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
         <li><span class="ck">✓</span> Questões FCC, Cebraspe, VUNESP, FGV, ENEM <b>gabaritadas</b></li>
       </ul>
       <div class="cta-row">
-        <a href="#oferta" class="btn">Garantir por R$29,90<span class="btn-line">acesso vitalício</span></a>
+        <a href="https://pay.hotmart.com/N106311191W" class="btn" target="_blank" rel="noopener">Garantir por R$29,90<span class="btn-line">acesso vitalício</span></a>
         <div class="pricepill"><s>de R$67,00</s><br><b>por R$29,90</b></div>
       </div>
     </div>
@@ -267,7 +231,6 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     </div>
   </div>
 </header>
-
 <div class="strip">
   <div class="wrap">
     <span><span class="i">★</span> 31 páginas de conteúdo</span>
@@ -276,8 +239,6 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     <span><span class="i">★</span> 7 dias de garantia</span>
   </div>
 </div>
-
-<!-- PAIN -->
 <section class="pain">
   <div class="wrap">
     <div class="sec-head">
@@ -293,8 +254,6 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-
-<!-- INSIDE -->
 <section>
   <div class="wrap">
     <div class="sec-head">
@@ -312,8 +271,6 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-
-<!-- MECHANISM -->
 <section>
   <div class="wrap">
     <div class="mech">
@@ -334,8 +291,6 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-
-<!-- PROOF -->
 <section class="proof">
   <div class="wrap">
     <div class="sec-head">
@@ -357,8 +312,6 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     <div class="qcount"><b>40</b><span>questões de concurso com gabarito</span></div>
   </div>
 </section>
-
-<!-- WHO -->
 <section class="pain">
   <div class="wrap">
     <div class="sec-head">
@@ -373,8 +326,6 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-
-<!-- OFFER -->
 <section class="offer" id="oferta">
   <div class="wrap">
     <div class="sec-head" style="color:#fff">
@@ -398,14 +349,13 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
         <span class="now">29,90</span>
       </div>
       <div class="installment">à vista no Pix ou parcelado no cartão</div>
-      <a href="https://go.hotmart.com/N106311191W" class="btn" target="_blank" rel="noopener">QUERO MINHA APOSTILA →</a>
+      <a href="https://pay.hotmart.com/N106311191W" class="btn" target="_blank" rel="noopener">QUERO MINHA APOSTILA →</a>
       <div class="secure">
         <span>🔒 Compra 100% segura</span>
         <span>⚡ Liberação na hora</span>
         <span>🛡️ Garantia de 7 dias</span>
       </div>
     </div>
-
     <div class="guar">
       <div class="seal">7<b>DIAS</b>garantia</div>
       <div>
@@ -415,8 +365,6 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-
-<!-- TESTIMONIALS -->
 <section>
   <div class="wrap">
     <div class="sec-head">
@@ -443,8 +391,6 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     <p class="note">⚠️ Depoimentos ilustrativos — substitua por prints/avaliações reais dos seus alunos antes de publicar.</p>
   </div>
 </section>
-
-<!-- FAQ -->
 <section class="pain">
   <div class="wrap">
     <div class="sec-head">
@@ -460,22 +406,18 @@ src="https://www.facebook.com/tr?id=1726236938374228&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
-
-<!-- FINAL CTA -->
 <section class="final">
   <div class="wrap">
     <h2>Os pontos de frações estão na sua prova. Garanta-os hoje.</h2>
     <p>Por menos do que um lanche, domine de uma vez o tema que mais aparece e menos gente acerta.</p>
-    <a href="https://go.hotmart.com/N106311191W" class="btn" style="font-size:18px;padding:18px 38px" target="_blank" rel="noopener">Quero garantir por R$29,90 →</a>
+    <a href="https://pay.hotmart.com/N106311191W" class="btn" style="font-size:18px;padding:18px 38px" target="_blank" rel="noopener">Quero garantir por R$29,90 →</a>
   </div>
 </section>
-
 <footer>
   <div class="wrap">
     <div class="logo footer-logo"><img src="imagens/professor_andre_arruda_logo.png" alt="Prof. André Arruda"></div>
     <p>© 2026 Prof. André Arruda · Todos os direitos reservados.<br>
   </div>
 </footer>
-
 </body>
 </html>
